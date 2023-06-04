@@ -30,7 +30,7 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Response Add Todo: '+ str(json_response))
+        print('Response Add Todo: '+ str(json_response['body]))
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
         print ('ID todo:'+ID_TODO)
@@ -43,7 +43,7 @@ class TestApi(unittest.TestCase):
         #List
         url = BASE_URL+"/todos"
         response = requests.get(url)
-        print('Response List Todo:' + str(response.json()))
+        print('Response List Todo:' + str(response.json['body']))
         self.assertEqual(
             response.status_code, 200, "Error en la petición API a {url}"
         )
@@ -85,7 +85,7 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Response Add Todo: '+ str(json_response))
+        print('Response Add Todo: '+ str(json_response['body']))
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
         print ('ID todo:'+ID_TODO)
@@ -99,7 +99,7 @@ class TestApi(unittest.TestCase):
         url = BASE_URL+"/todos/"+ID_TODO
         response = requests.get(url)
         json_response = response.json()
-        print('Response Get Todo: '+ str(json_response))
+        print('Response Get Todo: '+ str(json_response['body']))
         self.assertEqual(
             response.status_code, 200, "Error en la petición API a {url}"
         )
@@ -141,7 +141,7 @@ class TestApi(unittest.TestCase):
         }
         response = requests.put(url, data=json.dumps(data))
         json_response = response.json()
-        print('Response Update todo: ' + str(json_response))
+        print('Response Update todo: ' + str(json_response['body']))
         #jsonbody= json.loads(json_response['body'])
         self.assertEqual(
             response.status_code, 200, "Error en la petición API a {url}"
@@ -153,7 +153,7 @@ class TestApi(unittest.TestCase):
         url = BASE_URL+"/todos/"+ID_TODO
         response = requests.get(url)
         json_response = response.json()
-        print('Response Get Todo: '+ str(json_response))
+        print('Response Get Todo: '+ str(json_response['body']))
         self.assertEqual(
             response.status_code, 200, "Error en la petición API a {url}"
         )

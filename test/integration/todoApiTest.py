@@ -1,7 +1,10 @@
+import http.client
 import os
 import unittest
+from urllib.request import urlopen
 import requests
 import json
+
 import pytest
 
 BASE_URL = os.environ.get("BASE_URL")
@@ -9,9 +12,9 @@ BASE_URL = os.environ.get("BASE_URL")
 print(BASE_URL)
 DEFAULT_TIMEOUT = 2  # in secs
 
+
 @pytest.mark.api
 class TestApi(unittest.TestCase):
-
     def setUp(self):
         self.assertIsNotNone(BASE_URL, "URL no configurada")
         self.assertTrue(len(BASE_URL) > 8, "URL no configurada")
@@ -39,7 +42,7 @@ class TestApi(unittest.TestCase):
         # List
         url = BASE_URL + "/todos"
         response = requests.get(url)
-        print('Response List Todo:' + str(response.json()))
+        print('Response List Todo:' + str(response.json()['body']))
         self.assertEqual(
             response.status_code, 200, f"Error en la petición API a {url}"
         )
@@ -91,10 +94,7 @@ class TestApi(unittest.TestCase):
             response.status_code, 200, f"Error en la petición API a {url}"
         )
         self.assertEqual(
-            jsonbody['text'], "Integration text example - GET", f"Error en la petición API a {url}"
-        )
-        # Test GET TODO
-        url = BASE_URL
+            jsonbody['text'], "Integration text example -
     
     def test_api_updatetodo(self):
         print('---------------------------------------')

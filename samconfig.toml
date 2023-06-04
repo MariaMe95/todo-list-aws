@@ -21,7 +21,8 @@ capabilities = "CAPABILITY_IAM"
 parameter_overrides = "Stage=\"staging\""
 image_repositories = []
 confirm_changeset = true
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-lr8ln5nihft"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-exol4jzy1vft"
+
 
 [production]
 [production.deploy]

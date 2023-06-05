@@ -33,6 +33,10 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.table = create_todo_table(self.dynamodb)
         #self.table_local = create_todo_table()
         print ('End: setUp')
+        
+    def create_todo_table_error(self):
+        self.dynamodb= None
+        self.assertRaises(TypeError,create_todo_table,self.dynamodb)
 
     def tearDown(self):
         print ('---------------------')
